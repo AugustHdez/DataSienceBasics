@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+August
+"""
+########################################################################
+# This program ask the user to input their score (number form) and outputs the
+# corresponding letter grade
+
+# Variables to represent the grade thresholds
+A_score = 90
+B_score = 80
+C_score = 70
+D_score = 60
+
+# Fuction to check if value is numeric and within the range (0 to 100)
+def validate_input():
+    global score #varible designated global to work in further fuction
+    while True:  #Loop until user input is within specific constraints 
+        try:
+           score = float(input("Please enter your test score  "))
+           if score < 0 or score > 100: #constraned to a nuber between 0-100
+                print("Error!! Please enter a test score between 0 and 100") 
+                continue          #When the user input is out of range,... 
+        except ValueError:        #the program points the user towards using the correct input
+            print('Error!! Please enter a numeric score') #safe guard for non numeric input
+            continue                
+        break
+
+# Fuction to calculate the grade
+def calculate_grade(score): #Uses validated input by previous function (score)
+        if score >= A_score:    #Checks if input is between 90.0 and 100.0
+            print('Your grade is A.') 
+        elif score >= B_score:  #Checks if input is between 80.0 and 89.9    
+            print('Your grade is B.')
+        elif score >= C_score:  #Checks if input is between 70.0 and 79.9
+            print('Your grade is C.')
+        elif score >= D_score:  #Checks if input is between 60.0 and 69.9
+            print('Your grade is D.')
+        else:                   ##Checks if input is below 60.0  
+            print('Your grade is F.')
+            return score
+
+# Call the functions        
+validate_input() 
+calculate_grade(score)
+    
+

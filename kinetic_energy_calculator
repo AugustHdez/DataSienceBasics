@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Author: August
+"""
+########################################################################
+# This program ask the user to input an object's mass and velocity and 
+# then calculates its kinetic energy
+
+def validate_input(): #function that makes sure input is numeric and greater than 0
+    global mass
+    global velocity
+    while True: #Validates input for mass variable
+        try: #Used to catch user errors
+           mass = float(input("Please enter object's mass in kg:   ")) 
+           if mass < 0: #User has oportunity to try again if input is negative
+                print("Error!! Please enter a positive value:") 
+                continue
+        except ValueError: #Numeric input only, catches string or symbol inputs
+            print('Error!! Please enter a numeric value:')
+            continue 
+        break #terminate the loop
+    while True: #validates input for velocity variable
+        try:
+            velocity = float(input("Please enter object's velocity in m/s: "))
+            if velocity < 0:  
+                print("Error!! Please enter a positive value:") #When input is negative number
+                continue                                        #continue to validate for 
+        except ValueError:                                      #numeric input
+                print('Error!! Please enter a numeric value:')
+                continue
+        break
+        
+
+
+def kinetic_energy(mass,velocity):  #define function of mass and velocity
+    ke = 0.5*mass*(pow(velocity,2)) #Indicates the mathematical operation
+    print('The Kinetic Energy for an object with mass:',mass,'and velocity',
+          velocity,'is',ke)         #prints the computation
+
+### call the functions
+validate_input()
+kinetic_energy(mass, velocity)
+ 
+

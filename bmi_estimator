@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Author: August
+"""
+
+########################################################################
+# This program ask the user to input weight and height to calculate the BMI 
+# and the corresponding weight category
+
+def get_input(): #validate user input
+    global weight
+    global height
+    while True:
+        try: #catch errors the user might make when entering wheight
+           weight = float(input("Please enter weight in lbs   "))
+           if weight < 0: #a possible error is negative number
+                print("Error!! Please enter a positive value")  #loop to input and ask for correction
+                continue
+        except ValueError: #Prevent the program from failing when imput is not numeric
+            print('Error!! Please enter a numeric value') #ask for correction when input is not numeric
+            continue
+        break
+    while True: #validate the input of height
+        try:
+            height = float(input("Please enter height in inches  "))
+            if height < 0: #again prevent the program from computing negatives 
+                print("Error!! Please enter a positive value") 
+                continue
+        except ValueError: #and prevent from crashing due to non-numeric input
+                print('Error!! Please enter a numeric value')
+                continue
+        break
+    
+    
+def calculate_BMI(weight,height): #function to calculate body mas index(BMI)
+    global BMI 
+    BMI = weight*(702/pow(height, 2))   #BMI is equal to the weight of the person... 
+    return BMI                          #divided by their height to the power of 2 
+     
+ 
+
+    
+def calculate_category(BMI): #classify input into categories 
+    if BMI < 18.5:                          #check is the person is underweight
+        print('You are underweight')
+    elif BMI >= 18.5 and BMI <= 25:         #Check if the person BMI is optimal
+        print('You have an optimal weight')
+    elif BMI > 25:                          #check if the person is overweight
+        print('You are overweight')
+
+# Call functions
+get_input() 
+calculate_BMI(weight, height)
+calculate_category(BMI)
+        
+        
+
+        
+        
+       
